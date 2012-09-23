@@ -6,7 +6,10 @@ shinyUI(pageWithSidebar(
   
   # Sidebar with a slider input for number of observations
   sidebarPanel(
-    tag('script', c(src = 'https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML', type = 'text/javascript')),
+    # MathJax in the head section
+    tags$head(
+      tags$script(src = 'https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML', type = 'text/javascript')
+    ),
     helpText('This demo shows you the variablity of the estimates of
              coefficients in linear regressions. The regression model here is
              $$Y_i=\\beta_0+\\beta_1x_i+\\epsilon_i$$ where \\(\\epsilon \\sim

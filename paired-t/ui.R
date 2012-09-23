@@ -6,7 +6,9 @@ shinyUI(pageWithSidebar(
   
   # Sidebar with a slider input for number of observations
   sidebarPanel(
-    tag('script', c(src = 'https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML', type = 'text/javascript')),
+    tags$head(
+      tags$script(src = 'https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML', type = 'text/javascript')
+    ),
     helpText('The model for this demo is $$Y_{ij}=\\mu_{i}+\\gamma_{j}+\\epsilon_{ij}$$
              where \\(\\mu\\) is the fixed effect (group mean), \\(\\gamma\\)
              is the random effect for individuals, and \\(\\epsilon\\) is the
