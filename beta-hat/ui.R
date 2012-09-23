@@ -1,6 +1,5 @@
 library(shiny)
 
-# Define UI for application that plots random distributions 
 shinyUI(pageWithSidebar(
   
   headerPanel('Variability of \\(\\hat{\\beta}_1\\)'),
