@@ -14,7 +14,7 @@ shinyUI(pageWithSidebar(
              coefficients in linear regressions. The regression model here is
              $$Y_i=\\beta_0+\\beta_1x_i+\\epsilon_i$$ where \\(\\epsilon \\sim
              N(0, I_{n \\times n})\\) and \\(\\beta_0=0, \\beta_1=1\\). We keep
-             on simulating \\(\\epsilon\\) from the standard Normal distribution,
+             on simulating \\(\\epsilon\\) from the Normal distribution,
              and get different values of \\(\\hat{\\beta}_1\\). The left plot 
              shows the scatter plot of the simulated points: the red line denotes
              the true model, the solid black line represents the current slope,
@@ -22,7 +22,9 @@ shinyUI(pageWithSidebar(
              right histogram shows the distribution of the estimates of the
              slope. You can press the button below to get started:'),
     sliderInput('i', 'Step:', min = 1, max = 100, value = 1, step = 1,
-                animate = animationOptions(interval = 500))
+                animate = animationOptions(interval = 500)),
+    helpText('You can also change the variance of \\(\\epsilon\\)'),
+    sliderInput('var', '\\(Var(\\epsilon)\\)', min = 0, max = 10, value = 1, step = .1)
   ),
   
   # Show a plot of the generated distribution

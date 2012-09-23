@@ -11,7 +11,7 @@ shinyServer(function(input, output) {
   output$betaPlot = reactivePlot(function() {
     i = input$i
     if (NROW(b) > 100) b <<- NULL
-    y = x + rnorm(N)
+    y = x + rnorm(N, sd = sqrt(input$var))
     par(mfcol = c(1, 2), mar = c(4, 4.3, .1, .1))
     plot(x, y, xlim = xlim, ylim = ylim, pch = 19, col = 'gray',
          ylab = expression(y == beta[0] + beta[1]*x + epsilon))
