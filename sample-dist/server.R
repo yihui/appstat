@@ -81,6 +81,7 @@ shinyServer(function(input, output) {
     par(mfrow = c(1, 2), mar = c(4, 4, .1, .1))
     # population distribution
     do.call(plot, gen_dens(dist, param1, param2))
+    # sampling distribution
     xs = gen_stat(dist, param1, param2, n, statistic)
     hist(xs, prob = TRUE, xlab = paste('sampling distribution of', statistic), main = '')
     rug(xs)
