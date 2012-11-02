@@ -88,6 +88,7 @@ shinyServer(function(input, output) {
     # sampling distribution
     xs = gen_stat(dist, param1, param2, n, statistic, m)
     hist(xs, prob = TRUE, xlab = paste('sampling distribution of', statistic), main = '')
+    lines(density(xs), col = 'red')
     rug(xs)
   }, width = 700, height = 400)
   
