@@ -68,6 +68,9 @@ gen_stat = function(dist, param1, param2, n, statistic, m) {
     mean = mean,
     variance = var,
     median = median,
+    sum = sum,
+    min = min,
+    max = max,
     range = function(x) diff(range(x))
   )
   replicate(m, FUN(gen_rand(dist, param1, param2, n)))
