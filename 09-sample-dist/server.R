@@ -77,7 +77,7 @@ gen_stat = function(dist, param1, param2, n, statistic, m) {
 }
 
 shinyServer(function(input, output) {
-  
+
   output$distPlot = reactivePlot(function() {
     n = input$n; param1 = input$param1; param2 = input$param2; m = input$m
     dist = sub('^(.+) \\(.*$', '\\1', input$dist)
@@ -92,5 +92,5 @@ shinyServer(function(input, output) {
     lines(density(xs), col = 'red')
     rug(xs)
   }, width = 700, height = 400)
-  
+
 })

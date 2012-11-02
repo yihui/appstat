@@ -6,7 +6,7 @@ df = local({
   data.frame(x = x, y = B0 + B1*x + rnorm(N))
 })
 shinyServer(function(input, output) {
-  
+
   output$olsPlot = reactivePlot(function() {
     b0 = input$b0; b1 = input$b1
     par(mar = c(4, 4.3, .1, .1))
@@ -28,5 +28,5 @@ shinyServer(function(input, output) {
       }
     })
     }, width = 700, height = 500)
-  
+
 })

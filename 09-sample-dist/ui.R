@@ -1,9 +1,9 @@
 library(shiny)
 
 shinyUI(pageWithSidebar(
-  
+
   headerPanel('Sampling distributions'),
-  
+
   sidebarPanel(
     tags$head(
       tags$script(src = 'https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML', type = 'text/javascript')
@@ -25,7 +25,7 @@ shinyUI(pageWithSidebar(
     selectInput('statistic', 'Statistic',
                 c('Mean', 'Variance', 'Median', 'Sum', 'Min', 'Max', 'Range'))
   ),
-  
+
   mainPanel(
     plotOutput('distPlot')
   )

@@ -1,9 +1,9 @@
 library(shiny)
 
 shinyUI(pageWithSidebar(
-  
+
   headerPanel('Variability of \\(\\hat{\\beta}_1\\)'),
-  
+
   # Sidebar with a slider input for number of observations
   sidebarPanel(
     # MathJax in the head section
@@ -15,7 +15,7 @@ shinyUI(pageWithSidebar(
              $$Y_i=\\beta_0+\\beta_1x_i+\\epsilon_i$$ where \\(\\epsilon \\sim
              N(0, I_{n \\times n})\\) and \\(\\beta_0=0, \\beta_1=1\\). We keep
              on simulating \\(\\epsilon\\) from the Normal distribution,
-             and get different values of \\(\\hat{\\beta}_1\\). The left plot 
+             and get different values of \\(\\hat{\\beta}_1\\). The left plot
              shows the scatter plot of the simulated points: the red line denotes
              the true model, the solid black line represents the current slope,
              and the dashed lines record the historical values of the slope. The
@@ -26,7 +26,7 @@ shinyUI(pageWithSidebar(
     helpText('You can also change the variance of \\(\\epsilon\\)'),
     sliderInput('var', '\\(Var(\\epsilon)\\)', min = 0, max = 10, value = 1, step = .1)
   ),
-  
+
   # Show a plot of the generated distribution
   mainPanel(
     plotOutput('betaPlot')

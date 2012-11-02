@@ -6,7 +6,7 @@ calc_ci = function(n, s2) {
 data_ci = NULL
 
 shinyServer(function(input, output) {
-  
+
   output$ciPlot = reactivePlot(function() {
     n = input$n; s2 = input$var; yvar = input$yvar
     if (n < 2) return()
@@ -20,5 +20,5 @@ shinyServer(function(input, output) {
     nr = nrow(data_ci)
     segments(data_ci[nr, 1], y[nr], data_ci[nr, 2], y[nr], lwd = 2, col = 'red')
   }, width = 500, height = 500)
-  
+
 })

@@ -1,9 +1,9 @@
 library(shiny)
 
 shinyUI(pageWithSidebar(
-  
+
   headerPanel('Power of Two-sample t-test'),
-  
+
   sidebarPanel(
     tags$head(
       tags$script(src = 'https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML', type = 'text/javascript')
@@ -20,7 +20,7 @@ shinyUI(pageWithSidebar(
     sliderInput('alpha', '\\(\\alpha\\)', min = 0, max = 1, value = .05, step = .01),
     sliderInput('sd', '\\(\\sigma\\)', min = 0, max = 10, value = 1, step = .1)
   ),
-  
+
   mainPanel(
     plotOutput('pwrPlot')
   )

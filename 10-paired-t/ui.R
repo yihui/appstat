@@ -1,9 +1,9 @@
 library(shiny)
 
 shinyUI(pageWithSidebar(
-  
+
   headerPanel('Independent Two-sample t-test vs Paired t-test'),
-  
+
   # Sidebar with a slider input for number of observations
   sidebarPanel(
     tags$head(
@@ -21,7 +21,7 @@ shinyUI(pageWithSidebar(
     sliderInput('n', 'Sample size:', min = 10, max = 100, value = 30),
     numericInput('var', 'Variance of random effect:', min = 0, max = 10, value = 1, step = .1)
   ),
-  
+
   mainPanel(
     plotOutput('ciPlot')
   )

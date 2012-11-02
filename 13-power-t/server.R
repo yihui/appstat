@@ -6,7 +6,7 @@ t2_power = function(alpha, delta, sigma, n) {
   pnorm(cl, m) + pnorm(cu, m, lower.tail = FALSE)
 }
 shinyServer(function(input, output) {
-  
+
   output$pwrPlot = reactivePlot(function() {
     n = input$n; s = input$sd; alpha = input$alpha; delta = input$delta
     x0 = qnorm(.005, sd = s); x1 = qnorm(1 - .005, mean = delta, sd = s)
@@ -28,5 +28,5 @@ shinyServer(function(input, output) {
          xlab = 'delta', ylab = 'Probability of accept H0')
     abline(v = delta, col = 'red')
   }, width = 600, height = 550)
-  
+
 })

@@ -1,9 +1,9 @@
 library(shiny)
 
 shinyUI(pageWithSidebar(
-  
+
   headerPanel('Ordinary Least Squares'),
-  
+
   sidebarPanel(
     tags$head(
       tags$script(src = 'https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML', type = 'text/javascript')
@@ -22,7 +22,7 @@ shinyUI(pageWithSidebar(
              and dashed segments mean negative residuals. The red bar on the
              right indicates the Error Sum of Squares, which is the goal to minimize.')
   ),
-  
+
   mainPanel(
     plotOutput('olsPlot')
   )

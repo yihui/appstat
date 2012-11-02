@@ -7,7 +7,7 @@ coef_beta = function(x, y) coef(lm(y ~ x))
 b = NULL
 
 shinyServer(function(input, output) {
-  
+
   output$betaPlot = reactivePlot(function() {
     i = input$i
     if (NROW(b) > 100) b <<- NULL
@@ -24,5 +24,5 @@ shinyServer(function(input, output) {
          border = 'white')
     abline(v = b[n, 2])
   }, width = 700, height = 400)
-  
+
 })

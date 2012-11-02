@@ -1,9 +1,9 @@
 library(shiny)
 
 shinyUI(pageWithSidebar(
-  
+
   headerPanel('Confidence intervals with different n and \\(\\sigma\\)'),
-  
+
   # Sidebar with a slider input for number of observations
   sidebarPanel(
     tags$head(
@@ -18,7 +18,7 @@ shinyUI(pageWithSidebar(
     selectInput('yvar', 'Plot CI vs:', c('Sample size' = 'n', 'Variance' = 'var')),
     checkboxInput('reset', 'Clear history')
   ),
-  
+
   mainPanel(
     plotOutput('ciPlot')
   )

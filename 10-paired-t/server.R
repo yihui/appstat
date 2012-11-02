@@ -4,7 +4,7 @@ t_ci = function(x, y, paired = FALSE) {
   t.test(x, y, paired = paired)$conf.int
 }
 shinyServer(function(input, output) {
-  
+
   output$ciPlot = reactivePlot(function() {
     n = input$n; s = sqrt(input$var)
     ci1 = matrix(nrow = n - 1, ncol = 2)
@@ -26,5 +26,5 @@ shinyServer(function(input, output) {
     arrows(2:n+.1, ci2[, 1], 2:n+.1, ci2[, 2], col = 'red', angle = 90, length = .05, code = 3)
     legend('topright', c('paired', 'independent'), col = c('red', 'black'), pch = 19)
   }, width = 700, height = 500)
-  
+
 })
