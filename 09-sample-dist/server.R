@@ -62,7 +62,7 @@ gen_dens = function(dist, param1, param2) {
   res
 }
 
-gen_stat = function(dist, param1, param2, n, statistic) {
+gen_stat = function(dist, param1, param2, n, statistic, m) {
   FUN = switch(
     tolower(statistic),
     mean = mean,
@@ -70,19 +70,20 @@ gen_stat = function(dist, param1, param2, n, statistic) {
     median = median,
     range = function(x) diff(range(x))
   )
-  replicate(100, FUN(gen_rand(dist, param1, param2, n)))
+  replicate(m, FUN(gen_rand(dist, param1, param2, n)))
 }
 
 shinyServer(function(input, output) {
   
   output$distPlot = reactivePlot(function() {
-    n = input$n; param1 = input$param1; param2 = input$param2; dist = input$dist
+    n = input$n; param1 = input$param1; param2 = input$param2; m = input$m
+    dist = sub('^(.+) \\(.*$', '\\1', input$dist)
     statistic = input$statistic
     par(mfrow = c(1, 2), mar = c(4, 4, .1, .1))
     # population distribution
     do.call(plot, gen_dens(dist, param1, param2))
     # sampling distribution
-    xs = gen_stat(dist, param1, param2, n, statistic)
+    xs = gen_stat(dist, param1, param2, n, statistic, m)
     hist(xs, prob = TRUE, xlab = paste('sampling distribution of', statistic), main = '')
     rug(xs)
   }, width = 700, height = 400)

@@ -15,6 +15,7 @@ shinyUI(pageWithSidebar(
     sliderInput('param1', 'Parameter 1', min = 0, max = 10, value = 5, step = .1),
     sliderInput('param2', 'Parameter 2', min = 0, max = 10, value = .3, step = .1),
     sliderInput('n', 'Sample size', min = 2, max = 100, value = 30, step = 1),
+    sliderInput('m', 'Number of simulations', min = 2, max = 500, value = 100, step = 1),
     selectInput('statistic', 'Statistic',
                 c('Mean', 'Variance', 'Median', 'Range'))
   ),
