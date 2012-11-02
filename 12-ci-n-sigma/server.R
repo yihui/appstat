@@ -9,6 +9,7 @@ shinyServer(function(input, output) {
   
   output$ciPlot = reactivePlot(function() {
     n = input$n; s2 = input$var; yvar = input$yvar
+    if (n < 2) return()
     if (input$reset) data_ci <<- NULL
     data_ci <<- rbind(data_ci, calc_ci(n, s2))
     y = data_ci[, switch(yvar, n = 3, var = 4)]

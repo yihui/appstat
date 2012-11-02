@@ -12,7 +12,8 @@ shinyUI(pageWithSidebar(
     helpText('This module shows how the confidence intervals change with
              different sample sizes and variances. The data is from
              \\(N(0, \\sigma^2)\\)'),
-    sliderInput('n', 'Sample size:', min = 2, max = 100, value = 30),
+    sliderInput('n', 'Sample size:', min = 0, max = 100, value = 30, step = 5,
+                animate = animationOptions(interval = 500)),
     numericInput('var', '\\(\\sigma^2\\)', min = 0, max = 10, value = 1, step = .1),
     selectInput('yvar', 'Plot CI vs:', c('Sample size' = 'n', 'Variance' = 'var')),
     checkboxInput('reset', 'Clear history')
