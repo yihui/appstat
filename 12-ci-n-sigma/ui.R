@@ -14,7 +14,7 @@ shinyUI(pageWithSidebar(
              \\(N(0, \\sigma^2)\\)'),
     sliderInput('n', 'Sample size:', min = 0, max = 100, value = 30, step = 5,
                 animate = animationOptions(interval = 500)),
-    numericInput('var', '\\(\\sigma^2\\)', min = 0, max = 10, value = 1, step = .1),
+    numericInput('var', '\\(\\sigma^2\\)', min = 0, max = 10, value = 1, step = 1),
     selectInput('yvar', 'Plot CI vs:', c('Sample size' = 'n', 'Variance' = 'var')),
     checkboxInput('reset', 'Clear history')
   ),
