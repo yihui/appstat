@@ -5,7 +5,7 @@ shinyServer(function(input, output) {
   output$normalPlot = reactivePlot(function() {
     mu = input$mu; s = input$sigma
     par(mar = c(4, 4, .1, .1))
-    x = seq(-5, 5, length = 100)
+    x = seq(qnorm(.001, mu, s), qnorm(.999, mu, s), length = 100)
     plot(x, y <- dnorm(x, mu, s), type = 'n', ylab = 'density', ylim = c(0, .5))
     if (max(x) > 0) {
       x0 = seq(0, max(x), length = 30)
