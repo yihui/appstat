@@ -12,7 +12,7 @@ shinyUI(pageWithSidebar(
              \\(N(\\mu, \\sigma^2)\\) and the probability \\(P(X > 0)\\)
              (in the shaded area).'),
     sliderInput('mu', '\\(\\mu\\)', min = -3, max = 3, value = 0, step = .1),
-    sliderInput('sigma', '\\(\\sigma\\)', min = 0, max = 2, value = 1, step = .1)
+    sliderInput('sigma', '\\(\\sigma\\)', min = .8, max = 2, value = 1, step = .05),
   ),
 
   mainPanel(
