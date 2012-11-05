@@ -16,6 +16,7 @@ shinyServer(function(input, output) {
     } else p = 0
     legend('topright', sprintf('P(X > %s) = %.04f', xval, p), fill = 'lightgray', bty = 'n')
     lines(x, y); box()
+    abline(v = mu, col = 'red')
   }, width = 500, height = 400)
 
 })
