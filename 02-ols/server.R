@@ -1,11 +1,12 @@
 library(shiny)
 
-N = 30; B0 = runif(1, -5, 5); B1 = runif(1, -5, 5)
-df = local({
-  x = seq(-3, 3, length = N)
-  data.frame(x = x, y = B0 + B1*x + rnorm(N))
-})
 shinyServer(function(input, output) {
+
+  N = 30; B0 = runif(1, -5, 5); B1 = runif(1, -5, 5)
+  df = local({
+    x = seq(-3, 3, length = N)
+    data.frame(x = x, y = B0 + B1*x + rnorm(N))
+  })
 
   output$olsPlot = reactivePlot(function() {
     b0 = input$b0; b1 = input$b1
