@@ -25,7 +25,7 @@ shinyServer(function(input, output) {
       rect(x2, y0, x1, y0 + sse/sst * (y1 - y0), col = rgb(1, 0, 0, .5), border = NA)
       text(x2, (y0 + y1)/2, sprintf('SSE = %.02f', sse), pos = 2)
       if (input$showResid) {
-        segments(x, y0, x, y0 + abs(res), col = 'red', lty = ifelse(res > 0, 1, 2))
+        segments(x, y, x, y - res, col = 'red', lty = 2)
       }
     })
     }, width = 700, height = 500)
