@@ -81,6 +81,7 @@ shinyServer(function(input, output) {
   output$distPlot = reactivePlot(function() {
     n = input$n; param1 = input$param1; param2 = input$param2; m = input$m
     dist = tolower(sub('^(.+) \\(.*$', '\\1', input$dist))
+    if (dist %in% c('binomial', 'poisson')) param1 = ceiling(param1)
     statistic = input$statistic
     par(mfrow = c(1, 2), mar = c(4, 4, .1, .1))
     # population distribution

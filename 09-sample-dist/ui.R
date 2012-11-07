@@ -12,8 +12,8 @@ shinyUI(pageWithSidebar(
              statistics such as the mean, variance, median and so on.'),
     selectInput('dist', 'Population distribution:',
                 choices = c(
-                  'Binomial (n = param1, p = param2)',
-                  'Poisson (lambda = param1)',
+                  'Binomial (n = ceiling(param1), p = param2)',
+                  'Poisson (lambda = ceiling(param1))',
                   'Normal (mu = param1, sigma = param2)',
                   'Exponential (lambda = param1)',
                   'Gamma (shape = param1, scale = param2)'
