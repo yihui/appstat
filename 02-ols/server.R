@@ -23,6 +23,10 @@ shinyServer(function(input, output) {
       sst = sum((y - mean(y))^2)
       sse = sum(res^2)
       rect(x2, y0, x1, y0 + sse/sst * (y1 - y0), col = rgb(1, 0, 0, .5), border = NA)
+      if (input$showSSE) {
+        rect(x2, y0, x1, y0 + sum(resid(fit)^2)/sst * (y1 - y0),
+             col = rgb(0, 0, 1, .5), border = NA)
+      }
       text(x2, (y0 + y1)/2, sprintf('SSE = %.02f', sse), pos = 2)
       if (input$showResid) {
         segments(x, y, x, y - res, col = 'red', lty = 2)

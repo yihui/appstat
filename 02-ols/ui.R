@@ -18,9 +18,9 @@ shinyUI(pageWithSidebar(
                  value = round(runif(1, -2, 2), 1), step = .1),
     checkboxInput('showFit', 'Show OLS fit'),
     checkboxInput('showResid', 'Show residuals'),
-    helpText('If residuals are shown, solid segments denote positive residuals,
-             and dashed segments mean negative residuals. The red bar on the
-             right indicates the Error Sum of Squares, which is the goal to minimize.')
+    helpText('The red bar on the right indicates the Error Sum of Squares (SSE),
+             which is the goal to minimize.'),
+    checkboxInput('showSSE', 'Show SSE of the OLS fit')
   ),
 
   mainPanel(
