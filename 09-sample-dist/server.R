@@ -2,7 +2,7 @@ library(shiny)
 
 dist_check = function(dist, param1, param2) {
   switch(
-    tolower(dist),
+    dist,
     binomial = {
       if (param1 <= 0) stop('size must be greater than 0')
       if (param2 < 0 || param2 > 1) stop('probability must be between 0 and 1')
@@ -26,7 +26,7 @@ dist_check = function(dist, param1, param2) {
 gen_rand = function(dist, param1, param2, n) {
   dist_check(dist, param1, param2)
   switch(
-    tolower(dist),
+    dist,
     binomial = rbinom(n, size = param1, prob = param2),
     poisson = rpois(n, param1),
     normal = rnorm(n, param1, param2),
@@ -38,7 +38,7 @@ gen_rand = function(dist, param1, param2, n) {
 gen_dens = function(dist, param1, param2) {
   dist_check(dist, param1, param2)
   res = switch(
-    tolower(dist),
+    dist,
     binomial = list(x = 0:param1, y = dbinom(0:param1, size = param1, prob = param2), type = 'h'),
     poisson = {
       x = 0:qpois(.99, param1)
@@ -80,7 +80,7 @@ shinyServer(function(input, output) {
 
   output$distPlot = reactivePlot(function() {
     n = input$n; param1 = input$param1; param2 = input$param2; m = input$m
-    dist = sub('^(.+) \\(.*$', '\\1', input$dist)
+    dist = tolower(sub('^(.+) \\(.*$', '\\1', input$dist))
     statistic = input$statistic
     par(mfrow = c(1, 2), mar = c(4, 4, .1, .1))
     # population distribution
