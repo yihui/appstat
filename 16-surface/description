@@ -1,0 +1,5 @@
+This module explores the shapes of different response surface models. The full quadratic model is
+
+$$E(y)=\beta_0+\beta_1X_1+\beta_2X_2+\beta_3X_1X_2+\beta_4X_1^2+\beta_5X_2^2$$
+
+
