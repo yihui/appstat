@@ -27,7 +27,7 @@ shinyServer(function(input, output) {
     s = gen_surface()
     par(mar = rep(0, 4))
     pmat = persp(s$x, s$y, s$z, theta = input$theta, phi = input$phi,
-                 xlab = 'X1', ylab = 'X2', zlab = 'Y')
+                 xlab = 'X1', ylab = 'X2', zlab = 'Y', shade = .5)
     d = gen_data()
     points(trans3d(d$x, d$y, d$z, pmat), col = 'red', pch = 19)
   }, width = 500, height = 500)
