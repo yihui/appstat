@@ -21,9 +21,9 @@ shinyUI(pageWithSidebar(
   mainPanel(
     div(
       div(sliderInput('theta', '\\(\\theta\\) (azimuthal direction)', min = 0, max = 360, value = 0,
-                      animate = animationOptions(250, loop = TRUE)), style = 'width: 45%; float: left;'),
+                      animate = animationOptions(250, loop = TRUE)), class = 'span6'),
       div(sliderInput('phi', '\\(\\phi\\) (colatitude direction)', min = 0, max = 360, value = 15,
-                      animate = animationOptions(250, loop = TRUE)), style = 'width: 45%; float: right;')
+                      animate = animationOptions(250, loop = TRUE)), class = 'span6')
     ),
     plotOutput('surfacePlot', height = 'auto')
   )
