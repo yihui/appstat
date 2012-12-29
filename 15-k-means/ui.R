@@ -9,7 +9,8 @@ shinyUI(pageWithSidebar(
              either assign points to new cluster centers, or re-calculate the
              centers of all clusters by taking their means.'),
     selectInput('data', 'Data', c(
-      'Random Uniform' = 1, 'Random Normal' = 2, 'Mixture of Random Normal' = 3
+      'Random Uniform' = 1, 'Random Normal' = 2, 'Mixture of Random Normal' = 3,
+      'Old Faithful Geyser' = 4
     )),
     sliderInput('i', 'Step:', min = 0, max = 40, value = 0, step = 1,
                 animate = animationOptions(interval = 1000)),

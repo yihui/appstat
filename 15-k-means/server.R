@@ -16,7 +16,7 @@ shinyServer(function(input, output) {
     switch(as.integer(input$data),
            cbind(X1 = runif(50), X2 = runif(50)),
            cbind(X1 = rnorm(50), X2 = rnorm(50)),
-           mix_norm())
+           mix_norm(), as.matrix(faithful))
   })
   output$clusterPlot = reactivePlot(function() {
     i = input$i; x = data_gen()
