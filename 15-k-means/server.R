@@ -25,6 +25,7 @@ shinyServer(function(input, output) {
       centers <<- input$centers
       ocluster <<- sample(centers, nrow(x), replace = TRUE)
       centers <<- x[sample(nrow(x), centers), ]
+      converged <<- FALSE
     }
     numcent = nrow(centers)
     pch = col = 1:numcent
