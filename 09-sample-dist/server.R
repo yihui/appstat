@@ -79,9 +79,11 @@ gen_stat = function(dist, param1, param2, n, statistic, m) {
 shinyServer(function(input, output) {
 
   output$distPlot = reactivePlot(function() {
-    n = input$n; param1 = input$param1; param2 = input$param2; m = input$m
-    dist = tolower(sub('^(.+) \\(.*$', '\\1', input$dist))
-    if (dist %in% c('binomial', 'poisson')) param1 = ceiling(param1)
+    n = input$n; m = input$m
+    param1 = eval(parse(text = paste0('input$param1', input$dist)))
+    param2 = eval(parse(text = paste0('input$param2', input$dist)))
+    dist = switch(input$dist, `1` = 'binomial', `2` = 'poisson', `3` = 'normal',
+                  `4` = 'exponential', `5` = 'gamma')
     statistic = input$statistic
     par(mfrow = c(1, 2), mar = c(4, 4, .1, .1))
     # population distribution

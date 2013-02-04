@@ -12,14 +12,35 @@ shinyUI(pageWithSidebar(
              statistics such as the mean, variance, median and so on.'),
     selectInput('dist', 'Population distribution:',
                 choices = c(
-                  'Binomial (n = ceiling(param1), p = param2)',
-                  'Poisson (lambda = ceiling(param1))',
-                  'Normal (mu = param1, sigma = param2)',
-                  'Exponential (lambda = param1)',
-                  'Gamma (shape = param1, scale = param2)'
+                  'Binomial (n, p)' = '1',
+                  'Poisson (lambda)' = '2',
+                  'Normal (mu, sigma)' = '3',
+                  'Exponential (lambda)' = '4',
+                  'Gamma (shape, scale)' = '5'
                 )),
-    sliderInput('param1', 'Parameter 1', min = 0, max = 10, value = 5, step = .1),
-    sliderInput('param2', 'Parameter 2', min = 0, max = 10, value = .3, step = .1),
+    conditionalPanel(
+      "input.dist == '1'",
+      sliderInput('param11', 'n', min = 1, max = 50, value = 5, step = 1),
+      sliderInput('param21', 'p', min = 0, max = 1, value = .3, step = .05)
+    ),
+    conditionalPanel(
+      "input.dist == '2'",
+      sliderInput('param12', 'lambda', min = 1, max = 50, value = 5, step = 1)
+    ),
+    conditionalPanel(
+      "input.dist == '3'",
+      sliderInput('param13', 'mu', min = -5, max = 5, value = 0),
+      sliderInput('param23', 'sigma', min = 0, max = 10, value = 1, step = .1)
+    ),
+    conditionalPanel(
+      "input.dist == '4'",
+      sliderInput('param14', 'lambda', min = 0, max = 50, value = 5)
+    ),
+    conditionalPanel(
+      "input.dist == '5'",
+      sliderInput('param15', 'shape', min = 0, max = 10, value = 5),
+      sliderInput('param25', 'scale', min = 0, max = 10, value = 1)
+    ),
     sliderInput('n', 'Sample size', min = 2, max = 100, value = 30, step = 1),
     sliderInput('m', 'Number of simulations', min = 2, max = 500, value = 100, step = 1),
     selectInput('statistic', 'Statistic',
