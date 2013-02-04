@@ -13,15 +13,36 @@ shinyUI(pageWithSidebar(
              (in the shaded area).'),
     sliderInput('mu', '\\(\\mu\\)', min = -3, max = 3, value = 0, step = .1),
     sliderInput('sigma', '\\(\\sigma\\)', min = .8, max = 2, value = 1, step = .1),
-    helpText('You can set \\(x_1\\) to \\(-\\infty\\), and/or \\(x_2\\) to \\(+\\infty\\)
-             to get one-sided probabilities.'),
-    checkboxInput('x1inf', '\\(x_1=-\\infty\\)'),
-    checkboxInput('x2inf', '\\(x_2=+\\infty\\)')
+    conditionalPanel("!input.showq",
+                     helpText('You can set \\(x_1\\) to \\(-\\infty\\), and/or
+                              \\(x_2\\) to \\(+\\infty\\) to get one-sided probabilities.'),
+                     checkboxInput('x1inf', '\\(x_1=-\\infty\\)'),
+                     checkboxInput('x2inf', '\\(x_2=+\\infty\\)')
+    ),
+    helpText('Or you can set the probability to get the quantiles:'),
+    checkboxInput('showq', 'show quantiles')
   ),
 
   mainPanel(
     plotOutput('normalPlot', height = 'auto'),
-    div(sliderInput('xval', '\\(x_1,x_2\\)', min = -5, max = 5, value = c(0, 5), step = .1),
-        style = 'width: 500px')
+    div(
+      conditionalPanel(
+        "!input.showq && !(input.x1inf || input.x2inf)",
+        sliderInput('xval12', '\\(x_1,x_2\\)', min = -5, max = 5, value = c(0, 5), step = .1)
+      ),
+      conditionalPanel(
+        "!input.showq && input.x1inf && !input.x2inf",
+        sliderInput('xval2', '\\(x_2\\)', min = -5, max = 5, value = 0, step = .1)
+      ),
+      conditionalPanel(
+        "!input.showq && !input.x1inf && input.x2inf",
+        sliderInput('xval1', '\\(x_1\\)', min = -5, max = 5, value = 0, step = .1)
+      ),
+      conditionalPanel(
+        "input.showq",
+        sliderInput('prob', 'Probability', min = 0, max = 1, value = 0.5, step = .01)
+      ),
+      style = 'width: 500px'
+    )
   )
 ))
