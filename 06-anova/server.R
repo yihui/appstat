@@ -14,7 +14,7 @@ shinyServer(function(input, output) {
                group = factor(rep(sprintf('mu%s', 1:3), each = n), levels = sprintf('mu%s', 3:1)))
   })
 
-  output$aovPlot = reactivePlot({
+  output$aovPlot = renderPlot({
     d = gen_data()
     par(mar = c(4, 4, .1, .1), mgp = c(2.8, 1, 0), las = 1)
     plot(y ~ group, data = d, border = 'gray', horizontal = TRUE)
@@ -22,7 +22,7 @@ shinyServer(function(input, output) {
     points(c(input$mu1, input$mu2, input$mu3), 3:1, pch = '|', cex = 2, col = 'red')
   }, width = 600, height = 300)
 
-  output$aovSummary = reactivePrint({
+  output$aovSummary = renderPrint({
     summary(aov(y ~ group, data = gen_data()))
   })
 

@@ -8,7 +8,7 @@ shinyServer(function(input, output) {
     switch(as.integer(input$data), rnorm(50), runif(50), faithful[, 1], faithful[, 2])
   })
 
-  output$bootPlot = reactivePlot({
+  output$bootPlot = renderPlot({
     i = input$i; x = data_gen()
     if (i == 0) {
       plot.new(); text(.5, .5, 'Press the button to get started')

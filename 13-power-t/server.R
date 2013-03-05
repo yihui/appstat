@@ -7,7 +7,7 @@ t2_power = function(alpha, delta, sigma, n) {
 }
 shinyServer(function(input, output) {
 
-  output$pwrPlot = reactivePlot({
+  output$pwrPlot = renderPlot({
     n = input$n; s = input$sd; alpha = input$alpha; delta = input$delta
     x0 = qnorm(.005, sd = s); x1 = qnorm(1 - .005, mean = delta, sd = s)
     x = seq(x0, x1, .1)

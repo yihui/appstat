@@ -78,7 +78,7 @@ gen_stat = function(dist, param1, param2, n, statistic, m) {
 
 shinyServer(function(input, output) {
 
-  output$distPlot = reactivePlot({
+  output$distPlot = renderPlot({
     n = input$n; m = input$m
     param1 = eval(parse(text = paste0('input$param1', input$dist)))
     param2 = eval(parse(text = paste0('input$param2', input$dist)))

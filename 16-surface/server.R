@@ -23,7 +23,7 @@ shinyServer(function(input, output) {
     list(x = xs, y = ys, z = z)
   })
 
-  output$surfacePlot = reactivePlot({
+  output$surfacePlot = renderPlot({
     s = gen_surface()
     par(mar = rep(0, 4))
     pmat = persp(s$x, s$y, s$z, theta = input$theta, phi = input$phi,

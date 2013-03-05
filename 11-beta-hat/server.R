@@ -8,7 +8,7 @@ b = NULL
 
 shinyServer(function(input, output) {
 
-  output$betaPlot = reactivePlot({
+  output$betaPlot = renderPlot({
     i = input$i
     if (NROW(b) > 100) b <<- NULL
     y = x + rnorm(N, sd = sqrt(input$var))
