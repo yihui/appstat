@@ -7,7 +7,7 @@ data_ci = NULL
 
 shinyServer(function(input, output) {
 
-  output$ciPlot = reactivePlot(function() {
+  output$ciPlot = reactivePlot({
     n = input$n; s2 = input$var; yvar = input$yvar
     if (n < 2) return()
     if (input$reset) data_ci <<- NULL

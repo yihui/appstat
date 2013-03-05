@@ -2,7 +2,7 @@ library(shiny)
 
 shinyServer(function(input, output) {
 
-  output$normalPlot = reactivePlot(function() {
+  output$normalPlot = reactivePlot({
     mu = input$mu; s = input$sigma
     if (input$showq) {
       xval = mu + s * c(1, -1) * qnorm(.5 - input$prob/2)

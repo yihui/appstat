@@ -6,7 +6,7 @@ s = rep(1, N)
 
 shinyServer(function(input, output) {
 
-  output$diagPlot = reactivePlot(function() {
+  output$diagPlot = reactivePlot({
     i = input$i; xval = input$xval; yval = input$yval
     s[i] = 19  # make the i-th point solid
     par(mfrow = c(2, 2), mar = c(4, 4, .1, .1))

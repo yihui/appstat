@@ -6,19 +6,19 @@ shinyServer(function(input, output) {
   ocluster = NULL # clusters of previous step
   converged = FALSE  # convergence
 
-  mix_norm = reactive(function() {
+  mix_norm = reactive({
     n = input$centers
     do.call(rbind, lapply(1:n, function(i) {
       cbind(X1 = rnorm(50, runif(1, -5, 5)), X2 = rnorm(50, runif(1, -5, 5)))
     }))
   })
-  data_gen = reactive(function() {
+  data_gen = reactive({
     switch(as.integer(input$data),
            cbind(X1 = runif(50), X2 = runif(50)),
            cbind(X1 = rnorm(50), X2 = rnorm(50)),
            mix_norm(), as.matrix(faithful))
   })
-  output$clusterPlot = reactivePlot(function() {
+  output$clusterPlot = reactivePlot({
     i = input$i; x = data_gen()
     if (i == 0) {
       # initialize

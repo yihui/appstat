@@ -5,7 +5,7 @@ t_ci = function(x, y, paired = FALSE) {
 }
 shinyServer(function(input, output) {
 
-  output$ciPlot = reactivePlot(function() {
+  output$ciPlot = reactivePlot({
     n = input$n; s = sqrt(input$var)
     ci1 = matrix(nrow = n - 1, ncol = 2)
     ci2 = matrix(nrow = n - 1, ncol = 2)

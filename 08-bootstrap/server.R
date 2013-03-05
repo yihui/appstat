@@ -3,12 +3,12 @@ library(shiny)
 shinyServer(function(input, output) {
 
   s = NULL
-  data_gen = reactive(function() {
+  data_gen = reactive({
     s <<- NULL
     switch(as.integer(input$data), rnorm(50), runif(50), faithful[, 1], faithful[, 2])
   })
 
-  output$bootPlot = reactivePlot(function() {
+  output$bootPlot = reactivePlot({
     i = input$i; x = data_gen()
     if (i == 0) {
       plot.new(); text(.5, .5, 'Press the button to get started')

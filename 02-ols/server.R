@@ -8,7 +8,7 @@ shinyServer(function(input, output) {
     data.frame(x = x, y = B0 + B1*x + rnorm(N))
   })
 
-  output$olsPlot = reactivePlot(function() {
+  output$olsPlot = reactivePlot({
     b0 = input$b0; b1 = input$b1
     par(mar = c(4, 4.3, .1, .1))
     plot(y ~ x, data = df, col = 'darkgray', pch = 19)

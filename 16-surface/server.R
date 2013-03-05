@@ -9,21 +9,21 @@ fxy = function(x, y, b) {
 
 shinyServer(function(input, output) {
 
-  gen_data = reactive(function() {
+  gen_data = reactive({
     x = runif(30, x0, x1); y = runif(length(x), y0, y1)
     z = fxy(x, y, c(input$b0, input$b1, input$b2, input$b3, input$b4, input$b5)) +
       rnorm(length(x), sd = input$sigma)
     list(x = x, y = y, z = z)
   })
 
-  gen_surface = reactive(function() {
+  gen_surface = reactive({
     z = outer(xs, ys, function(x, y) {
       fxy(x, y, c(input$b0, input$b1, input$b2, input$b3, input$b4, input$b5))
     })
     list(x = xs, y = ys, z = z)
   })
 
-  output$surfacePlot = reactivePlot(function() {
+  output$surfacePlot = reactivePlot({
     s = gen_surface()
     par(mar = rep(0, 4))
     pmat = persp(s$x, s$y, s$z, theta = input$theta, phi = input$phi,

@@ -4,7 +4,7 @@ rx = NULL  # stores the random sample
 
 shinyServer(function(input, output) {
 
-  output$binomPlot = reactivePlot(function() {
+  output$binomPlot = reactivePlot({
     n = input$n; p = input$p; m = input$m
     par(mar = c(4, 4, 2, .1))
     x = 0:n; y = dbinom(x, n, p)
