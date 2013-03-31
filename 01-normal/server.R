@@ -4,10 +4,11 @@ shinyServer(function(input, output) {
 
   output$normalPlot = renderPlot({
     mu = input$mu; s = input$sigma
+    p0 = .0000001
     if (input$showq) {
       xval = mu + s * c(1, -1) * qnorm(.5 - input$prob/2)
     } else {
-      xval = mu + s * c(1, -1) * qnorm(.0000001)
+      xval = mu + s * c(1, -1) * qnorm(p0)
       if (input$x1inf) {
         if (!input$x2inf) xval[2] = input$xval2
       } else {
