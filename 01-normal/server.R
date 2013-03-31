@@ -6,7 +6,10 @@ shinyServer(function(input, output) {
     mu = input$mu; s = input$sigma
     p0 = .0000001
     if (input$showq) {
-      xval = mu + s * c(1, -1) * qnorm(.5 - input$prob/2)
+      px = if (input$oneside) c(p0, 1 - min(max(input$prob, p0), 1 - p0)) else {
+        max(.5 - input$prob/2, p0)
+      }
+      xval = mu + s * c(1, -1) * qnorm(px)
     } else {
       xval = mu + s * c(1, -1) * qnorm(p0)
       if (input$x1inf) {
@@ -23,10 +26,13 @@ shinyServer(function(input, output) {
     x0 = c(x0, rev(x0))
     polygon(x0, y0, col = 'lightgray', border = NA)
     p = if (input$showq) input$prob else abs(diff(pnorm(xval, mu, s)))
-    text(mean(xval), max(y0)/2,
-         sprintf('P(%.02f < X < %.02f) = %.04f',
-                 if (!input$showq && input$x1inf) -Inf else xval[1],
-                 if (!input$showq && input$x2inf) Inf else xval[2], p))
+    xm = mean(xval)
+    if ((!input$showq && input$x1inf) || (input$showq && input$oneside)) xval[1] = -Inf
+    if ((!input$showq && input$x2inf)) xval[2] = Inf
+    if (input$showq) {
+      if (p >= 1) xval = c(-Inf, Inf) else if (input$oneside && p <= 0) xval[2] = -Inf
+    }
+    text(xm, max(y0)/2, sprintf('P(%.02f < X < %.02f) = %.04f', xval[1], xval[2], p))
     lines(x, y); box()
     abline(v = mu, col = 'red')
   }, width = 500, height = 400)

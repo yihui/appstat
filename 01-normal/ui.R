@@ -20,7 +20,9 @@ shinyUI(pageWithSidebar(
                      checkboxInput('x2inf', '\\(x_2=+\\infty\\)')
     ),
     helpText('Or you can set the probability to get the quantiles:'),
-    checkboxInput('showq', 'show quantiles')
+    checkboxInput('showq', 'show quantiles'),
+    conditionalPanel('input.showq',
+                     checkboxInput('oneside', 'one-sided probability'))
   ),
 
   mainPanel(
